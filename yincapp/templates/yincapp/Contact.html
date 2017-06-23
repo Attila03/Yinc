@@ -1,0 +1,62 @@
+{% extends 'yincapp/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block customcss %}
+<link type="text/css" rel="stylesheet" href='{% static "css/contact.css" %}'/>
+{% endblock customcss %}
+
+{% block content %}
+
+<div class="container" id="msgmap">
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-0">
+            <div id="map"></div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <div class="row">
+                <div class="col-xs-8 col-xs-offset-2 col-sm-10 col-sm-offset-1">
+                    <form method="post">
+                        <legend class="text-center">Contact Us</legend>
+                        {{ ContactForm | crispy }}
+                        <button type="button" class="btn btn-info center-block">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid" id="address_container">
+    <div class="row">
+        <div class="col-xs-5 col-xs-offset-1 col-md-3 col-md-offset-1">
+            <div id="address">
+                <p> AVS Compound, 80 Ft. Road</p>
+                <p> Sony Signal, Koramangala</p>
+                <p> Bengaluru, Karnataka</p>
+                <p>India, 560034.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
+
+{% block js %}
+<script>
+      function initMap() {
+        var uluru = {lat: 12.936854, lng: 77.628497};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 14,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8x4Nhh5DDVGajII5vpBF6EIYyuZUXzd8&callback=initMap"></script>
+
+{% endblock js %}

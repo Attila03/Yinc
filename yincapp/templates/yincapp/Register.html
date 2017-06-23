@@ -1,0 +1,20 @@
+{% extends 'yincapp/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-6 col-xs-offset-3 col-lg-4 col-lg-offset-4">
+            <form method="post" style="margin: 5% 0;">
+                {% csrf_token %}
+                <legend class="text-center">Registration Form</legend>
+                {{ UserForm | crispy }}
+
+                {{ ProfileForm | crispy }}
+                <hr style="border:solid 1px black;">
+                <button type="submit" class="btn btn-success center-block">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

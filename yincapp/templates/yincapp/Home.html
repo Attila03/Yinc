@@ -1,0 +1,73 @@
+{% extends 'yincapp/base.html' %}
+
+{% load static %}
+
+{% block customcss %}
+<link type="text/css" rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock customcss %}
+
+
+{% block content %}
+<nav>
+<ul class="nav nav-tabs" role="tablist" id="content-navigation-tabs">
+  <li class="nav-item active">
+    <a class="nav-link" data-toggle="tab" href="#books" role="tab">Books</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#games" role="tab">Games</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#watches" role="tab">Watches</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#food" role="tab">Food</a>
+  </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane active" id="books" role="tabpanel">
+    <div class="container">
+      <div class="row">
+        {% for item in Books %}
+        <div class="col-md-3 col-sm-4 col-sm-offset-0 col-xs-4 col-xs-offset-1 ind-item">
+          <img class="center-block" src="{% static item.getimageurl %}">
+          <p class="text-center">{{item.name}}</p>
+          <p class="text-center">Rs. {{item.price}}/-</p>
+          <p class="text-center">{{item.description}}</p>
+          <button type="button" class="btn btn-sm btn-primary cart-add-btn">+ Cart</button>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane" id="games" role="tabpanel">
+    <div class="container">
+      <div class="row">
+        {% for item in Games %}
+        <div class="col-md-3 col-sm-4 col-sm-offset-0 col-xs-4 col-xs-offset-1 ind-item">
+          <img class="center-block" src="{% static item.getimageurl %}">
+          <p class="text-center">{{item.name}}</p>
+          <p class="text-center">Rs. {{item.price}}/-</p>
+          <p class="text-center">{{item.description}}</p>
+          <button type="button" class="btn btn-sm btn-primary cart-add-btn">+ Cart</button>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane" id="watches" role="tabpanel">Watches</div>
+  <div class="tab-pane" id="food" role="tabpanel">...</div>
+</div>
+</nav>
+
+
+<div id="cart-btn">
+  <!--<p class="text-center">Cart</p>-->
+  <button type="button" class="btn">CART</button>
+</div>
+
+{% endblock content %}
+
+
+

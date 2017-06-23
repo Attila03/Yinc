@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>YincMall{% block title %}{% endblock title %}</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    {% block customcss %}
+    {% endblock customcss %}
+    <style>
+        body{
+            min-height: 100vh;
+        }
+
+        legend{
+            color: #003366;
+        }
+        .navbar{
+            border-radius: 0;
+            background-color: crimson;
+            border-color: darkred;
+        }
+
+        .navbar-brand#brand{
+            width:300px;
+            text-align: center;
+            letter-spacing: 2px;
+            color: cornflowerblue;
+            font-size: 30px;
+        }
+
+        #navigation-bar{
+            margin-bottom:0;
+        }
+
+    </style>
+
+</head>
+<body>
+    <nav class="navbar navbar-inverse" id="navigation-bar">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" id="brand" href="{% url 'home' %}">Yincmall</a>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-col" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="nav-col">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="{% url 'contact' %}"> Contact </a>
+                </li>
+                <li class="">
+                    <a href="{% url 'register' %}"> Register  </a>
+                </li>
+                {% if  not request.user.is_authenticated %}
+                <li class="">
+                    <a href="">  Login  </a>
+                </li>
+                {% else %}
+                <li>
+                   <a href="">Logout</a>
+                </li>
+                {% endif %}
+            </ul>
+            </div>
+        </div>
+    </nav>
+
+
+{% block content %}
+{% endblock content %}
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+{% block js %}
+{% endblock js %}
+</body>
+</html>
