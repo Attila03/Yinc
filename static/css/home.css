@@ -3,7 +3,7 @@
 }
 
 #content-navigation-tabs{
-    background: darkblue;
+    background: slateblue;
     margin-bottom: 5%
 }
 
@@ -21,7 +21,7 @@
 }
 
 #content-navigation-tabs > li.active > a {
-    background: slateblue;
+    background: darkblue;
     color: black;
 }
 
@@ -146,6 +146,10 @@ img {
 
     #cart-content * h3{
         margin-top: 0;
+    }
+
+    .tab-content {
+        margin-bottom: 240px;
     }
 
 }

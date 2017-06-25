@@ -27,7 +27,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['yinc.herokuapp.com']
+ALLOWED_HOSTS = ['yinc.herokuapp.com',]
 
 
 # Application definition
@@ -85,7 +85,7 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
+#
 db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
 
@@ -138,6 +138,6 @@ STATICFILES_DIRS = [
 
 
 try:
-    from .local_settings.py import *
+    from .local_settings import *
 except ImportError:
     pass
