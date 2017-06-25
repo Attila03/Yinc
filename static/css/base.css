@@ -1,0 +1,25 @@
+body{
+    min-height: 100vh;
+    position: relative;
+}
+
+legend{
+    color: #003366;
+}
+.navbar{
+    border-radius: 0;
+    background-color: crimson;
+    border-color: darkred;
+}
+
+.navbar-brand#brand{
+    width:300px;
+    text-align: center;
+    letter-spacing: 2px;
+    color: cornflowerblue;
+    font-size: 30px;
+}
+
+#navigation-bar{
+    margin-bottom:0;
+}

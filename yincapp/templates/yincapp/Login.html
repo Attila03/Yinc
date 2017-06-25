@@ -1,0 +1,36 @@
+{% extends 'yincapp/base.html' %}
+{% load crispy_forms_tags %}
+
+{% load static %}
+{% block customcss %}
+<link type="text/css" rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock customcss %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class = "container-fluid">
+    <div class="row">
+        <div class="col-xs-6 col-xs-offset-3 text-center" style="font-size: 2em;">
+            <p>You are already logged in as {{ user.username }}.</p>
+            <p>Logout if you want to login/register as another user.</p>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% if not user.is_authenticated %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-4 col-xs-offset-4 text-center">
+            <form method="post">
+                {% csrf_token %}
+                <legend><strong>LOGIN</strong></legend>
+                {{form | crispy}}
+                <button type="submit" class="btn btn-success center-block">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock content %}

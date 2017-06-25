@@ -1,41 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <title>YincMall{% block title %}{% endblock title %}</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
     {% block customcss %}
     {% endblock customcss %}
-    <style>
-        body{
-            min-height: 100vh;
-        }
-
-        legend{
-            color: #003366;
-        }
-        .navbar{
-            border-radius: 0;
-            background-color: crimson;
-            border-color: darkred;
-        }
-
-        .navbar-brand#brand{
-            width:300px;
-            text-align: center;
-            letter-spacing: 2px;
-            color: cornflowerblue;
-            font-size: 30px;
-        }
-
-        #navigation-bar{
-            margin-bottom:0;
-        }
-
-    </style>
-
+    <link rel="stylesheet" type="text/css" href="{% static 'css\base.css' %}">
 </head>
 <body>
     <nav class="navbar navbar-inverse" id="navigation-bar">
@@ -60,11 +33,11 @@
                 </li>
                 {% if  not request.user.is_authenticated %}
                 <li class="">
-                    <a href="">  Login  </a>
+                    <a href="{% url 'login' %}">  Login  </a>
                 </li>
                 {% else %}
                 <li>
-                   <a href="">Logout</a>
+                   <a href="{% url 'logout' %}">Logout</a>
                 </li>
                 {% endif %}
             </ul>
