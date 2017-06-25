@@ -3,7 +3,7 @@ from yincapp.views import Home, Register, Login, Logout, Contact, AddToCart
 
 
 urlpatterns = [
-    url(r'', Home.as_view(), name='homepage'),
+    url(r'^$', Home.as_view(), name='homepage'),
     url(r'^Home/$', Home.as_view(), name='home'),
     url(r'Register/$', Register.as_view(), name='register'),
     url(r'Login/$', Login.as_view(), name='login'),
