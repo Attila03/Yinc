@@ -85,10 +85,10 @@
       <div class="row">
         {% for item in Books %}
         <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-0 col-md-3 ind-item">
-          <img class="center-block" src="{% static item.getimageurl %}">
+          <img class="center-block" src="{% static item.getimageurl %}" title="{{item.description}}">
           <h4 class="text-center">{{item.name}}</h4>
           <p class="text-center">Rs. {{item.price}}/-</p>
-          <p class="text-center">{{item.description}}</p>
+          <p class="text-center item-description">{{item.description}}</p>
           <button type="button" class="btn btn-sm btn-primary cart-add-btn" id="{{item.id}}">+ Cart</button>
         </div>
         {% endfor %}
@@ -100,10 +100,10 @@
       <div class="row">
         {% for item in Games %}
         <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-0 col-md-3 ind-item">
-          <img class="center-block" src="{% static item.getimageurl %}">
+          <img class="center-block" src="{% static item.getimageurl %}" title="{{item.description}}">
           <h4 class="text-center">{{item.name}}</h4>
           <p class="text-center">Rs. {{item.price}}/-</p>
-          <p class="text-center">{{item.description}}</p>
+          <p class="text-center item-description">{{item.description}}</p>
           <button type="button" class="btn btn-sm btn-primary cart-add-btn" id="{{item.id}}">+ Cart</button>
         </div>
         {% endfor %}

@@ -135,27 +135,6 @@ img {
     width: 50%;
 }
 
-@media(max-width: 768px) {
-    #cart-content.open {
-        height: 240px;
-        transition: 0.5s;
-    }
-
-
-    #checkout-btn {
-        width: 33%
-    }
-
-    #cart-content * h3{
-        margin-top: 0;
-    }
-
-    .tab-content {
-        margin-bottom: 240px;
-    }
-
-}
-
 
 /*CAROUSEL*/
 #banner-slider {
@@ -178,5 +157,30 @@ img {
 
 i {
     margin: 140px 0;
+}
+
+@media(max-width: 768px) {
+    #cart-content.open {
+        height: 240px;
+        transition: 0.5s;
+    }
+
+
+    #checkout-btn {
+        width: 33%
+    }
+
+    #cart-content * h3{
+        margin-top: 0;
+    }
+
+    .tab-content {
+        margin-bottom: 240px;
+    }
+
+    .item-description {
+        display: none;
+    }
+
 }
 
