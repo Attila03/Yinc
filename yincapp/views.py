@@ -22,6 +22,11 @@ class Home(View):
             'Food': Food,
             'Watches': Watches
         }
+
+        if not request.session.get("sessioncart_created"):
+            request.session["cart"] = {}
+            request.session["total"] = 0
+            request.session["sessioncart_created"] = True
         return render(request, 'yincapp/Home.html', context=context)
 
 class AddToCart(View):
