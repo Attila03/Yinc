@@ -3,16 +3,17 @@
 }
 
 #content-navigation-tabs{
-    background: slateblue;
-    margin-bottom: 5%
+    background: white;
+    color: black;
 }
 
 #content-navigation-tabs >li {
-  width: 25%;
+    width: 25%;
+    color: black;
 }
 
 #content-navigation-tabs > li > a {
-    color: white;
+    color: black;
     text-align: center;
 }
 
@@ -21,8 +22,9 @@
 }
 
 #content-navigation-tabs > li.active > a {
-    background: darkblue;
-    color: black;
+    /*background: darkblue;*/
+    /*color: black;*/
+    background: lightgrey;
 }
 
 .row {
@@ -153,3 +155,28 @@ img {
     }
 
 }
+
+
+/*CAROUSEL*/
+#banner-slider {
+    padding: 0;
+}
+
+.carousel {
+    background: black;
+    margin-bottom: 2%;
+}
+
+.carousel * .item {
+    height: 350px;
+}
+
+#banner-slider img {
+    width: 100%;
+    height: 100%;
+}
+
+i {
+    margin: 140px 0;
+}
+
