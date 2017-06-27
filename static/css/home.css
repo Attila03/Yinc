@@ -197,6 +197,9 @@ i {
         transition: 0.5s;
     }
 
+    #cart-btn {
+        width: 30%;
+    }
 
     #checkout-btn {
         width: 33%

@@ -27,6 +27,9 @@ class Home(View):
             request.session["cart"] = {}
             request.session["total"] = 0
             request.session["sessioncart_created"] = True
+        # request.session.set_expiry(0)
+        # print(request.session.get_expiry_age())
+        # print(request.session.get_expire_at_browser_close())
         return render(request, 'yincapp/Home.html', context=context)
 
 class AddToCart(View):
