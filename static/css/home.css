@@ -1,3 +1,5 @@
+/*CONTENT NAVIGATION MENU*/
+
 .tab-content {
   margin-bottom: 120px;
 }
@@ -27,6 +29,16 @@
     background: lightgrey;
 }
 
+
+/*.fa-gamepad,.fa-book {*/
+    /*position: relative;*/
+    /*right: 5px;*/
+/*}*/
+
+/*END CONTENT NAVIGATION*/
+
+
+
 .row {
     display: -webkit-box;
     display: -webkit-flex;
@@ -55,6 +67,9 @@ img {
   max-width: 127px;
   margin-bottom: 15px;
 }
+
+
+/*CART*/
 
 .cart-add-btn{
   width: 40%;
@@ -135,6 +150,23 @@ img {
     width: 50%;
 }
 
+.fa-plus-square {
+    color: green;
+    margin-left: 5px;
+}
+
+.fa-minus-square{
+    color: crimson;
+    margin-right: 5px;
+}
+
+.fa-shopping-bag {
+    position: relative;
+    right: 5px;
+}
+
+/*END CART*/
+
 
 /*CAROUSEL*/
 #banner-slider {
@@ -180,6 +212,10 @@ i {
 
     .item-description {
         display: none;
+    }
+
+    .ind-item {
+        padding-bottom: 15%;
     }
 
 }

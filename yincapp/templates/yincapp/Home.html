@@ -14,7 +14,7 @@
 <nav>
 <ul class="nav nav-tabs" role="tablist" id="content-navigation-tabs">
   <li class="nav-item active">
-    <a class="nav-link" data-toggle="tab" href="#books" role="tab">Books</a>
+    <a class="nav-link" data-toggle="tab" href="#books" role="tab"><span class="fa fa-book fa-fw"></span>Books</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" data-toggle="tab" href="#games" role="tab">Games</a>
@@ -130,6 +130,8 @@
             <li class="text-center">
               <p>{{ item.name }}</p>
               <p>{{ item.count }}</p>
+              <span class="fa fa-minus-square fa-lg"></span>
+              <span class="fa fa-plus-square fa-lg"></span>
             </li>
             {% endfor %}
           </ul>
@@ -137,7 +139,7 @@
         <div class="col-xs-12 col-sm-4" id="cart-checkout">
           <h3 class="text-center">TOTAL</h3>
           <p class="text-center"> {{ request.session.total }}</p>
-          <a class="btn btn-success center-block" id="checkout-btn" href="#">CHECKOUT</a>
+          <a class="btn btn-success center-block" id="checkout-btn" href="#"><span class="fa fa-shopping-bag"></span>CHECKOUT</a>
         </div>
       </div>
     </div>
