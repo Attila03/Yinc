@@ -14,7 +14,7 @@
 <nav>
 <ul class="nav nav-tabs" role="tablist" id="content-navigation-tabs">
   <li class="nav-item active">
-    <a class="nav-link" data-toggle="tab" href="#books" role="tab"><span class="fa fa-book fa-fw"></span>Books</a>
+    <a class="nav-link" data-toggle="tab" href="#books" role="tab">Books</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" data-toggle="tab" href="#games" role="tab">Games</a>
@@ -89,7 +89,7 @@
           <h4 class="text-center">{{item.name}}</h4>
           <p class="text-center">Rs. {{item.price}}/-</p>
           <p class="text-center item-description">{{item.description}}</p>
-          <button type="button" class="btn btn-sm btn-primary cart-add-btn" id="{{item.id}}">+ Cart</button>
+          <button type="button" class="btn btn-sm btn-primary cart-add-btn" id="{{item.id}}"><span class="fa fa-plus fa-fw"></span> Cart</button>
         </div>
         {% endfor %}
       </div>
