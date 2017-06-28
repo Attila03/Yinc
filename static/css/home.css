@@ -135,7 +135,9 @@ img {
     min-width: 150px;
     display: inline-block;
     color: black;
-    margin-top: 20px;
+    margin-top: 10px;
+    padding-top: 10px;
+    position: relative;
 }
 
 #cart-content * p {
@@ -150,14 +152,25 @@ img {
     width: 50%;
 }
 
+.fa-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: blue;
+    cursor: pointer;
+    /*display: none;*/
+}
+
 .fa-plus-square {
     color: green;
     margin-left: 5px;
+    cursor: pointer;
 }
 
 .fa-minus-square{
     color: crimson;
     margin-right: 5px;
+    cursor: pointer;
 }
 
 .fa-shopping-bag {
@@ -202,7 +215,7 @@ i {
     }
 
     #checkout-btn {
-        width: 33%
+        width: 50%
     }
 
     #cart-content * h3{

@@ -89,7 +89,7 @@
           <h4 class="text-center">{{item.name}}</h4>
           <p class="text-center">Rs. {{item.price}}/-</p>
           <p class="text-center item-description">{{item.description}}</p>
-          <button type="button" class="btn btn-sm btn-primary cart-add-btn" id="{{item.id}}"><span class="fa fa-plus fa-fw"></span> Cart</button>
+          <button type="button" class="btn btn-sm btn-primary cart-add-btn" id={{item.id}}><span class="fa fa-plus fa-fw"></span> Cart</button>
         </div>
         {% endfor %}
       </div>
@@ -104,7 +104,7 @@
           <h4 class="text-center">{{item.name}}</h4>
           <p class="text-center">Rs. {{item.price}}/-</p>
           <p class="text-center item-description">{{item.description}}</p>
-          <button type="button" class="btn btn-sm btn-primary cart-add-btn" id="{{item.id}}">+ Cart</button>
+          <button type="button" class="btn btn-sm btn-primary cart-add-btn" id={{item.id}}>+ Cart</button>
         </div>
         {% endfor %}
       </div>
@@ -128,10 +128,11 @@
           <ul>
             {% for id, item in request.session.cart.items %}
             <li class="text-center">
+              <span class="fa fa-close remove" key="{{id}}"></span>
               <p>{{ item.name }}</p>
               <p>{{ item.count }}</p>
-              <span class="fa fa-minus-square fa-lg"></span>
-              <span class="fa fa-plus-square fa-lg"></span>
+              <span class="fa fa-minus-square fa-lg sub" key={{id}}></span>
+              <span class="fa fa-plus-square fa-lg add" key={{id}}></span>
             </li>
             {% endfor %}
           </ul>
@@ -168,7 +169,7 @@
       }
     });
 
-    // ADD ITEMS TO CART
+    // ADD ITEMS TO CART THROUGH MENU
     $(".cart-add-btn").click(function(){
       $.ajax({
         type: 'GET',
@@ -181,6 +182,35 @@
         $("#cart-content").load(location.href + " #cart-content-reload");
       });
     })
+
+//    ADD/SUB/REMOVE ITEMS TO CART THROUGH CART
+
+    $("#cart-wrapper").on("click", ".add, .sub", function(){
+      var operation = $(this).hasClass("add")?"add":"sub";
+      $.ajax({
+        type: "GET",
+        url: "{% url 'AddSubCart' %}",
+        data: {
+          "product_id" : $(this).attr("key"),
+          "operation" : operation
+        }
+      }).done(function(data){
+          $("#cart-content").load(location.href +" #cart-content-reload");
+      });
+    })
+
+    $("#cart-wrapper").on("click", ".remove", function(){
+      $.ajax({
+        type: "GET",
+        url: "{% url 'RemoveFromCart' %}",
+        data: {
+          "product_id" : $(this).attr("key")
+        }
+      }).done(function(data){
+        $("#cart-content").load(location.href + " #cart-content-reload");
+      })
+    })
+
   })
 </script>
 {% endblock js %}

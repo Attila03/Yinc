@@ -21,7 +21,7 @@ def cart_add(request, cart, idx):
 
 
 def cart_sub(request, cart, idx):
-    if cart[idx] > 1:
+    if cart[idx]["count"] > 1:
         cart[idx]["count"] -= 1
         request.session["total"] -= Product.objects.get(pk=int(idx)).price
         request.session.modified = True

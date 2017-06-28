@@ -8,6 +8,7 @@ from .Cart import cart_add, cart_remove, cart_sub
 
 # Create your views here.
 
+
 class Home(View):
 
     def get(self, request, *args, **kwargs):
@@ -32,11 +33,29 @@ class Home(View):
         # print(request.session.get_expire_at_browser_close())
         return render(request, 'yincapp/Home.html', context=context)
 
+
 class AddToCart(View):
 
     def get(self, request, *args, **kwargs):
         cart_add(request, request.session["cart"], request.GET['product_id'])
         print(request.session["cart"])
+        return HttpResponse()
+
+
+class AddSubCart(View):
+
+    def get(self, request, *args, **kwargs):
+        if request.GET['operation'] == "add":
+            cart_add(request, request.session["cart"], request.GET['product_id'])
+        else:
+            cart_sub(request, request.session["cart"], request.GET['product_id'])
+        return HttpResponse()
+
+
+class RemoveFromCart(View):
+
+    def get(self, request, *args, **kwargs):
+        cart_remove(request, request.session["cart"], request.GET['product_id'])
         return HttpResponse()
 
 
