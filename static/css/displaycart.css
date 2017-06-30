@@ -1,0 +1,55 @@
+body {
+    background: blanchedalmond;
+}
+
+#cart {
+    margin-top: 15vh;
+    margin-bottom: 15vh;
+
+}
+
+#cart-content {
+    background: black;
+    color: white;
+    opacity: 0.8;
+}
+
+
+.cart-items {
+    padding: 10px 0;
+}
+
+.cart-heading {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: solid 1px white;
+}
+
+.cart-total {
+    border-top: solid 1px white;
+    padding: 15px 0 5px;
+}
+
+.cart-footer {
+    padding-top: 10px;
+    padding-bottom: 20px
+}
+
+.fa-edit {
+    padding: 0 2px;
+}
+
+
+@media (max-width: 768px) {
+
+    .hide-sm-text {
+        display: none;
+    }
+
+    .fa-edit, .fa-shopping-cart {
+        width: 100%;
+    }
+}
+
+
+

@@ -1,0 +1,57 @@
+{% extends 'yincapp/base.html' %}
+
+{% load static %}
+
+{% block customcss %}
+<link type="text/css" rel="stylesheet" href="{% static 'css/displaycart.css' %}">
+{% endblock customcss %}
+
+{% block content %}
+
+<div class="container-fluid" id="cart">
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-lg-4 col-lg-offset-4" id="cart-content">
+            <div class="row cart-heading">
+                <div class="col-xs-7">ITEM</div>
+                <div class="col-xs-3 text-center">QUANTITY</div>
+                <div class="col-xs-2 text-center">PRICE</div>
+            </div>
+            {% for index, item in request.session.cart.items %}
+            <div class="row cart-items">
+                <div class="col-xs-7">{{item.name}}</div>
+                <div class="col-xs-3 text-center">{{item.count}}</div>
+                <div class="col-xs-2 text-center">{% widthratio item.count 1 item.price %}</div>
+            </div>
+            {% endfor %}
+            <div class="row cart-total">
+                <div class="col-xs-7">TOTAL</div>
+                <div class="col-xs-3"></div>
+                <div class="col-xs-2 text-center">{{request.session.total}}</div>
+            </div>
+
+            <div class="row cart-footer">
+                <div class="col-xs-3 col-xs-offset-2 col-sm-2 col-sm-offset-6">
+                    <a href="{% url 'home' %}">
+                    <button class="btn btn-sm btn-primary">
+                        <span class="fa fa-edit"></span>
+                        <span class="hide-sm-text">EDIT</span>
+                    </button>
+                    </a>
+                </div>
+                <div class="col-xs-3 col-xs-offset-2 col-sm-4 col-sm-offset-0">
+                    <a {% if not request.user.is_authenticated %} href="#" {% else %} href="{% url 'order' %}" {% endif %}>
+                    <button class="btn btn-sm btn-success"
+                    {% if not request.user.is_authenticated %} disabled title="Login to order" {% else %} title="Place Order" {% endif %} >
+                        <span class="fa fa-shopping-cart"></span>
+                        <span class="hide-sm-text">PLACE ORDER</span>
+                    </button>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}

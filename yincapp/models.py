@@ -26,7 +26,7 @@ class Product(models.Model):
         return '/img/{}.jpg'.format(self.name)
 
     def __str__(self):
-        return '{} - {}'.format(self.name, self.price)
+        return '{}'.format(self.name)
 
 
 class Profile(models.Model):
@@ -44,6 +44,26 @@ def create_or_save_user_profile(sender, instance, created, **kwargs):
         Profile.objects.create(user=instance)
     instance.profile.save()
 
+
+class Cart(models.Model):
+
+    products = models.ManyToManyField(Product, through='ProductCount', blank=True)
+    customer = models.ForeignKey(User, blank=True)
+    total = models.FloatField(blank=True)
+    last_modified = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return "{} ____ {}  ___{}".format(self.products.all(), self.customer, self.total)
+
+
+class ProductCount(models.Model):
+
+    product = models.ForeignKey(Product)
+    cart = models.ForeignKey(Cart)
+    count = models.PositiveIntegerField()
+
+    def __str__(self):
+        return "{} : {}".format(self.product, self.count)
 
 
 

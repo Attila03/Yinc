@@ -2,9 +2,9 @@ from django.shortcuts import render, HttpResponse, reverse, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.views import View
 
-from .models import Product
+from .models import Product, Cart
 from .forms import UserForm, ProfileForm, ContactForm, UserLoginForm
-from .Cart import cart_add, cart_remove, cart_sub
+from .Cart import cart_add, cart_remove, cart_sub, sessioncart_to_dbcart
 
 # Create your views here.
 
@@ -57,6 +57,26 @@ class RemoveFromCart(View):
     def get(self, request, *args, **kwargs):
         cart_remove(request, request.session["cart"], request.GET['product_id'])
         return HttpResponse()
+
+
+class DisplayCart(View):
+
+    def get(self, request, *args, **kwargs):
+        return render(request, 'yincapp/DisplayCart.html', )
+
+
+
+
+class Order(View):
+
+    def get(self, request, *args, **kwargs):
+        customer = request.user
+        if not request.session.get('dbcart_created'):
+            new_cart = Cart(customer=customer, total=request.session["total"])
+            new_cart.save()
+            print(new_cart.id)
+            sessioncart_to_dbcart(request, request.session["cart"], new_cart)
+            return render(request, 'yincapp/Order.html', )
 
 
 class Register(View):

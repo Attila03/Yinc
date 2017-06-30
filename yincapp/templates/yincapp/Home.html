@@ -140,7 +140,10 @@
         <div class="col-xs-12 col-sm-4" id="cart-checkout">
           <h3 class="text-center">TOTAL</h3>
           <p class="text-center"> {{ request.session.total }}</p>
-          <a class="btn btn-success center-block" id="checkout-btn" href="#"><span class="fa fa-shopping-bag"></span>CHECKOUT</a>
+          <a class="btn btn-success center-block" id="checkout-btn" href="{% url 'displaycart' %}">
+              <span class="fa fa-shopping-bag"></span>
+              VIEW CART
+          </a>
         </div>
       </div>
     </div>

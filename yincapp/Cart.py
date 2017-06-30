@@ -1,5 +1,5 @@
 
-from .models import Product
+from .models import Product, ProductCount
 
 
 '''
@@ -32,4 +32,12 @@ def cart_remove(request, cart, idx):
     cart.pop(idx)
     request.session.modified = True
 
+
+def sessioncart_to_dbcart(request, sessioncart, dbcart):
+
+    item_indices = [int(x) for x in sessioncart.keys()]
+
+    items = Product.objects.filter(id__in=item_indices)
+    for item in items:
+        ProductCount(product=item, cart=dbcart, count=sessioncart[str(item.id)]["count"]).save()
 
