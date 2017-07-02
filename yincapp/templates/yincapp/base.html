@@ -14,7 +14,7 @@
 </head>
 <body>
     <nav class="navbar navbar-inverse" id="navigation-bar">
-        <div class="container">
+        <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" id="brand" href="{% url 'home' %}">Yincmall</a>
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-col" aria-expanded="false">
@@ -30,14 +30,19 @@
                 <li>
                     <a href="{% url 'contact' %}"> Contact </a>
                 </li>
-                <li class="">
+                <li>
                     <a href="{% url 'register' %}"> Register  </a>
                 </li>
                 {% if  not request.user.is_authenticated %}
-                <li class="">
+                <li>
                     <a href="{% url 'login' %}">  Login  </a>
                 </li>
                 {% else %}
+                <li>
+                    {% if user.is_authenticated and user.profile.avatar %}
+                   <a href="{% url 'editprofile' %}"><img src="{{user.profile.avatar.url}}" style="width: 20px;height: 20px; margin-bottom: 0"></a>
+                   {% endif %}
+                </li>
                 <li>
                    <a href="{% url 'logout' %}">Logout</a>
                 </li>

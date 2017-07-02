@@ -5,7 +5,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-8 col-xs-offset-2 col-lg-4 col-lg-offset-4">
-            <form method="post" style="margin: 5% 0;">
+            <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <legend class="text-center">Registration Form</legend>
                 {{ UserForm | crispy }}

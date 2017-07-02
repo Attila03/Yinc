@@ -13,7 +13,7 @@ legend{
 }
 
 .navbar-brand#brand{
-    width:300px;
+    width: 300px;
     text-align: center;
     letter-spacing: 2px;
     color: cornflowerblue;
@@ -22,4 +22,10 @@ legend{
 
 #navigation-bar{
     margin-bottom:0;
+}
+
+@media(max-width: 768px){
+    .navbar-brand#brand {
+        width: 150px;
+    }
 }

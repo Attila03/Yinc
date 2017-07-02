@@ -3,7 +3,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.views import View
 
 from .models import Product, Cart
-from .forms import UserForm, ProfileForm, ContactForm, UserLoginForm
+from .forms import UserForm, ProfileForm, ContactForm, UserLoginForm, EditProfileForm
 from .Cart import cart_add, cart_remove, cart_sub, sessioncart_to_dbcart
 
 # Create your views here.
@@ -12,7 +12,6 @@ from .Cart import cart_add, cart_remove, cart_sub, sessioncart_to_dbcart
 class Home(View):
 
     def get(self, request, *args, **kwargs):
-
         Books = Product.objects.filter(category='BK')
         Watches = Product.objects.filter(category='WH')
         Food = Product.objects.filter(category='FD')
@@ -38,7 +37,6 @@ class AddToCart(View):
 
     def get(self, request, *args, **kwargs):
         cart_add(request, request.session["cart"], request.GET['product_id'])
-        print(request.session["cart"])
         return HttpResponse()
 
 
@@ -65,8 +63,6 @@ class DisplayCart(View):
         return render(request, 'yincapp/DisplayCart.html', )
 
 
-
-
 class Order(View):
 
     def get(self, request, *args, **kwargs):
@@ -74,7 +70,6 @@ class Order(View):
         if not request.session.get('dbcart_created'):
             new_cart = Cart(customer=customer, total=request.session["total"])
             new_cart.save()
-            print(new_cart.id)
             sessioncart_to_dbcart(request, request.session["cart"], new_cart)
             return render(request, 'yincapp/Order.html', )
 
@@ -90,12 +85,12 @@ class Register(View):
 
     def post(self, request, *args, **kwargs):
         user_form = UserForm(request.POST)
-        profile_form = ProfileForm(request.POST)
+        profile_form = ProfileForm(request.POST, request.FILES)
         if user_form.is_valid() and profile_form.is_valid():
             new_user = user_form.save(commit=False)
             new_user.set_password(user_form.cleaned_data['password'])
             new_user.save()
-            ProfileForm(request.POST, instance=new_user.profile).save()
+            ProfileForm(request.POST,request.FILES, instance=new_user.profile).save()
             login(request, new_user)
             if not request.session.get("sessioncart_created"):
                 request.session["cart"] = {}
@@ -108,6 +103,19 @@ class Register(View):
         }
         return render(request, 'yincapp/Register.html', context=context)
 
+
+class EditProfile(View):
+
+    def get(self, request, *args, **kwargs):
+        context = {'form': EditProfileForm(instance=request.user.profile)}
+        return render(request, 'yincapp/EditProfile.html', context=context)
+
+    def post(self, request, *args, **kwargs):
+        editprofile_form = EditProfileForm(request.POST, request.FILES, instance=request.user.profile)
+        if editprofile_form.is_valid():
+            editprofile_form.save()
+            return redirect(reverse('home'))
+        return render(request, 'yincapp/EditProfile.html', context={'form': editprofile_form,})
 
 class Login(View):
 

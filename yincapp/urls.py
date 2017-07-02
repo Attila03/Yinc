@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from yincapp.views import (Home, Register, Login, Logout, Contact, AddToCart, AddSubCart, RemoveFromCart, Order,
-                            DisplayCart, )
+                            DisplayCart, EditProfile)
 
 
 urlpatterns = [
@@ -15,4 +15,5 @@ urlpatterns = [
     url(r'RemoveFromCart/$', RemoveFromCart.as_view(), name='RemoveFromCart'),
     url(r'Order/$', Order.as_view(), name='order'),
     url(r'DisplayCart/$', DisplayCart.as_view(), name='displaycart'),
+    url(r'EditProfile/$', EditProfile.as_view(), name='editprofile'),
 ]

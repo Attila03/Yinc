@@ -34,6 +34,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, related_name='profile')
     address = models.TextField(null=True)
     phone_number = models.IntegerField(null=True)
+    avatar = models.ImageField(upload_to='avatars', null=True, blank=True)
 
     def __str__(self):
         return "{}, {}".format(self.user, self.phone_number)

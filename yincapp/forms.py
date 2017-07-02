@@ -13,15 +13,25 @@ class UserForm(forms.ModelForm):
         help_texts = {'username': None}
 
 
-
 class ProfileForm(forms.ModelForm):
 
     class Meta:
-        model=Profile
-        exclude = ['user', ]
+        model = Profile
+        exclude = ['user',]
         widgets = {
             'address': forms.Textarea(attrs={'rows': 5})
         }
+
+
+class EditProfileForm(forms.ModelForm):
+
+    class Meta:
+        model=Profile
+        exclude = ['user',]
+        widgets = {
+            'address': forms.Textarea(attrs={'rows': 5})
+        }
+
 
 
 class UserLoginForm(forms.Form):
@@ -46,5 +56,5 @@ class ContactForm(forms.Form):
     name = forms.CharField()
     email = forms.EmailField(required=True)
     message = forms.CharField(
-        widget = forms.Textarea()
+        widget=forms.Textarea()
     )
